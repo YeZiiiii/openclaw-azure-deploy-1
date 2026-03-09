@@ -125,7 +125,10 @@
           {
             "name": "azureOpenAiApiKey",
             "type": "Microsoft.Common.PasswordBox",
-            "label": "API Key",
+            "label": {
+              "password": "API Key",
+              "confirmPassword": "Confirm API Key"
+            },
             "toolTip": "Optional API key for the Azure OpenAI resource.",
             "options": {
               "hideConfirmation": true
@@ -153,7 +156,10 @@
           {
             "name": "feishuAppSecret",
             "type": "Microsoft.Common.PasswordBox",
-            "label": "Feishu App Secret",
+            "label": {
+              "password": "Feishu App Secret",
+              "confirmPassword": "Confirm Feishu App Secret"
+            },
             "toolTip": "Optional Feishu App Secret for WebSocket bot integration.",
             "options": {
               "hideConfirmation": true
