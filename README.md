@@ -3,12 +3,12 @@
 [中文](#zh-cn) | [English](#en)
 
 Use the button below to easily deploy OpenClaw to your Azure environment.
-
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhanhsia%2Fopenclaw-azure-deploy%2Fazurechina%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fhanhsia%2Fopenclaw-azure-deploy%2Fazurechina%2FcreateUiDefinition.json)
+Azure 全球用户 / Azure Global users:
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhanhsia%2Fopenclaw-azure-deploy%2Fmain%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fhanhsia%2Fopenclaw-azure-deploy%2Fmain%2FcreateUiDefinition.json)
 
 Azure 中国区用户 / Azure China users:
 
-[![Deploy to Azure China](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhanhsia%2Fopenclaw-azure-deploy%2Fazurechina%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fhanhsia%2Fopenclaw-azure-deploy%2Fazurechina%2FcreateUiDefinition.json)
+[![Deploy to Azure China](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhanhsia%2Fopenclaw-azure-deploy%2Fmain%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2Fhanhsia%2Fopenclaw-azure-deploy%2Fmain%2FcreateUiDefinition.json)
 
 <a id="zh-cn"></a>
 # 中文部署指南
@@ -29,7 +29,7 @@ Azure 中国区用户 / Azure China users:
 
 这三个 Azure OpenAI 参数要么全部填写，要么全部留空。
 
-如果您希望部署完成后立即接入飞书（WebSocket 长连接模式），还需要额外准备以下信息：
+如果您希望部署完成后立即接入飞书（WebSocket 长连接模式），请先在飞书开放平台完成应用配置并获取以下信息：
 
 - **Feishu App ID**：飞书开放平台中应用的 App ID，例如 `cli_xxx`
 - **Feishu App Secret**：飞书开放平台中应用的 App Secret
@@ -192,9 +192,7 @@ az deployment group show \
 
 ## 飞书配置（Azure China）
 
-如果您在部署表单中填写了 `feishuAppId` 和 `feishuAppSecret`，模板会自动把飞书通道写入 OpenClaw 配置，并启用 WebSocket 长连接模式，无需暴露公网 webhook。
-
-飞书开放平台还需要完成以下设置：
+在部署表单填写 `feishuAppId` 和 `feishuAppSecret` 之前，请先在飞书开放平台完成以下设置并获取 App ID / App Secret。完成后，再把这两个值填入部署表单；模板会自动把飞书通道写入 OpenClaw 配置，并启用 WebSocket 长连接模式，无需暴露公网 webhook。
 
 1. 创建企业自建应用，并获取 App ID / App Secret。
 2. 开启机器人能力。
@@ -308,7 +306,7 @@ If you want Azure OpenAI configured during deployment, also prepare the followin
 
 These three Azure OpenAI parameters must either all be provided or all be left empty.
 
-If you want Feishu connected during deployment with the WebSocket long-connection mode, also prepare the following:
+If you want Feishu connected during deployment with the WebSocket long-connection mode, first finish the Feishu Open Platform app setup and obtain the following:
 
 - **Feishu App ID**: the Feishu app App ID, for example `cli_xxx`
 - **Feishu App Secret**: the Feishu app App Secret
@@ -469,9 +467,7 @@ After you obtain the public domain name, the remaining steps are the same as in 
 
 ## Feishu Setup (Azure China)
 
-If you provide `feishuAppId` and `feishuAppSecret` in the deployment form, the template writes the Feishu channel configuration into OpenClaw automatically and uses the WebSocket long-connection mode, so no public webhook is required.
-
-You still need to complete the Feishu-side setup:
+Before you enter `feishuAppId` and `feishuAppSecret` in the deployment form, complete the following Feishu Open Platform setup and obtain the App ID and App Secret. After that, enter those two values in the form; the template writes the Feishu channel configuration into OpenClaw automatically and uses the WebSocket long-connection mode, so no public webhook is required.
 
 1. Create a self-built enterprise app and copy the App ID and App Secret.
 2. Enable the bot capability.
