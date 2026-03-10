@@ -5,3 +5,5 @@ openclawConfig.template.json
 tests/__pycache__/
 *.pyc
 .github/copilot-instructions.md
+docs/*
+mcp-bridge/*
