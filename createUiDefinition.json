@@ -106,7 +106,7 @@
             "name": "azureOpenAiEndpoint",
             "type": "Microsoft.Common.TextBox",
             "label": "Endpoint",
-            "toolTip": "Fill in all three Azure OpenAI fields together, or leave all three empty.",
+            "toolTip": "Fill in Endpoint, Deployment Name, and either API Key or Resource ID (depending on auth mode) together, or leave all empty.",
             "defaultValue": "",
             "constraints": {
               "required": false
@@ -123,19 +123,51 @@
             }
           },
           {
+            "name": "azureOpenAiAuthMode",
+            "type": "Microsoft.Common.DropDown",
+            "label": "Authentication Mode",
+            "toolTip": "Choose 'API Key' for standard key-based auth, or 'Managed Identity (Entra ID)' if your Azure OpenAI resource has API key authentication disabled.",
+            "defaultValue": "API Key",
+            "constraints": {
+              "required": true,
+              "allowedValues": [
+                { "label": "API Key", "value": "key" },
+                { "label": "Managed Identity (Entra ID)", "value": "managedIdentity" }
+              ]
+            }
+          },
+          {
             "name": "azureOpenAiApiKey",
             "type": "Microsoft.Common.PasswordBox",
             "label": {
               "password": "API Key",
               "confirmPassword": "Confirm API Key"
             },
-            "toolTip": "API key for the Azure OpenAI resource.",
+            "toolTip": "Required when Authentication Mode is 'API Key'. Leave empty when using Managed Identity.",
             "options": {
               "hideConfirmation": true
             },
             "constraints": {
               "required": false
-            }
+            },
+            "visible": "[equals(steps('openai').azureOpenAiAuthMode, 'key')]"
+          },
+          {
+            "name": "azureOpenAiResourceId",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Azure OpenAI Resource ID",
+            "toolTip": "Required when Authentication Mode is 'Managed Identity'. Full resource ID from the Azure OpenAI resource's Properties page.",
+            "defaultValue": "",
+            "constraints": {
+              "required": false,
+              "validations": [
+                {
+                  "regex": "^(/subscriptions/[^/]+/resourceGroups/[^/]+/providers/Microsoft\\.CognitiveServices/accounts/[^/]+)?$",
+                  "message": "Must be a valid Cognitive Services resource ID or empty."
+                }
+              ]
+            },
+            "visible": "[equals(steps('openai').azureOpenAiAuthMode, 'managedIdentity')]"
           }
         ]
       },
@@ -212,6 +244,8 @@
       "azureOpenAiEndpoint": "[steps('openai').azureOpenAiEndpoint]",
       "azureOpenAiDeployment": "[steps('openai').azureOpenAiDeployment]",
       "azureOpenAiApiKey": "[steps('openai').azureOpenAiApiKey.password]",
+      "azureOpenAiAuthMode": "[steps('openai').azureOpenAiAuthMode]",
+      "azureOpenAiResourceId": "[steps('openai').azureOpenAiResourceId]",
       "feishuAppId": "[steps('feishu').feishuAppId]",
       "feishuAppSecret": "[steps('feishu').feishuAppSecret.password]",
       "msteamsAppId": "[steps('teams').msteamsAppId]",
