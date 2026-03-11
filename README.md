@@ -12,7 +12,10 @@ Azure 中国区用户 / Azure China users:
 
 [![Deploy to Azure China](https://aka.ms/deploytoazurebutton)](https://portal.azure.cn/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FYeZiiiii%2Fopenclaw-azure-deploy-1%2Fmain%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FYeZiiiii%2Fopenclaw-azure-deploy-1%2Fmain%2FcreateUiDefinition.json)
 
-部署效果
+## 部署效果
+
+
+![alt text](image-1.png)
 
 ![alt text](image.png)
 
@@ -300,6 +303,7 @@ sudo cat /data/openclaw.json
    sudo grep MCP_API_KEY /etc/openclaw/openclaw.env
    ```
 2. 打开 Copilot Studio → 你的 Agent → 添加 **Tool** → 选择 **MCP**
+ Agent Instruction: 对于用户的所有输入，请把输入内容完整作为 [ openclaw ] 这个tool的输入 ，并把 [ openclaw ]的 响应 中的text字段完整返回输出给用户，不要翻译，不要做任何修改。
 3. **Server URL**：填写部署输出中的 `mcpEndpointUrl`（如 `https://<域名>/mcp`）
 4. **Authentication**：选择 **API Key**
 5. **Header name**：`x-api-key`
