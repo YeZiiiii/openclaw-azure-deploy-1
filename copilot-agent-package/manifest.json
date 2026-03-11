@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.23/MicrosoftTeams.schema.json",
+  "manifestVersion": "1.23",
+  "version": "1.0.0",
+  "id": "<ReplacedwithYourAzureBotID>",
+  "name": {
+    "short": "OpenClaw"
+  },
+  "developer": {
+    "name": "Contoso",
+    "websiteUrl": "https://openclaw-vm-h2rbwdgl52p2k.eastus2.cloudapp.azure.com",
+    "privacyUrl": "https://openclaw-vm-h2rbwdgl52p2k.eastus2.cloudapp.azure.com",
+    "termsOfUseUrl": "https://openclaw-vm-h2rbwdgl52p2k.eastus2.cloudapp.azure.com"
+  },
+  "description": {
+    "short": "OpenClaw AI Assistant in Teams",
+    "full": "OpenClaw AI Assistant integrated with Microsoft Teams. Chat with OpenClaw via DMs, group chats, or channels."
+  },
+  "icons": {
+    "outline": "outline.png",
+    "color": "color.png"
+  },
+  "accentColor": "#5B6DEF",
+  "copilotAgents": {
+    "customEngineAgents": [
+      {
+        "type": "bot",
+        "id": "<ReplacedwithYourAzureBotID>"
+      }
+    ]
+  },
+  "bots": [
+    {
+      "botId": "<ReplacedwithYourAzureBotID>",
+      "scopes": ["personal", "team", "groupChat"],
+      "isNotificationOnly": false,
+      "supportsCalling": false,
+      "supportsVideo": false,
+      "supportsFiles": true
+    }
+  ],
+  "webApplicationInfo": {
+    "id": "<ReplacedwithYourAzureBotID>"
+  },
+  "authorization": {
+    "permissions": {
+      "resourceSpecific": [
+        { "name": "ChannelMessage.Read.Group", "type": "Application" },
+        { "name": "ChannelMessage.Send.Group", "type": "Application" },
+        { "name": "Member.Read.Group", "type": "Application" },
+        { "name": "Owner.Read.Group", "type": "Application" },
+        { "name": "ChannelSettings.Read.Group", "type": "Application" },
+        { "name": "TeamMember.Read.Group", "type": "Application" },
+        { "name": "TeamSettings.Read.Group", "type": "Application" },
+        { "name": "ChatMessage.Read.Chat", "type": "Application" }
+      ]
+    }
+  }
+}
